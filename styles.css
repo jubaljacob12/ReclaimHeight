@@ -1158,3 +1158,40 @@ a:hover {
         font-size: 1.5rem;
     }
 }
+
+/* Policy Table Styles */
+.policy-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--bg-card);
+    border: 1px solid var(--glass-border);
+}
+
+.policy-table th,
+.policy-table td {
+    padding: 16px 20px;
+    text-align: left;
+}
+
+.policy-table th {
+    background: rgba(255, 255, 255, 0.05);
+    font-weight: 600;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.policy-table td {
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.policy-table tr:last-child td {
+    border-bottom: none;
+}
+
+.policy-table tr:hover td {
+    background: rgba(255, 255, 255, 0.02);
+}
