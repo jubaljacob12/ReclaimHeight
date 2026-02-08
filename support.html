@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - ReclaimHeight</title>
+    <meta name="description"
+        content="Get help and support for ReclaimHeight. Contact us for questions, feedback, or technical assistance.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Support Page Specific Styles */
+        .support-hero {
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 120px;
+            padding-bottom: 60px;
+        }
+
+        .support-hero .hero-bg-effects {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .support-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .support-content h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+        }
+
+        .support-content .subheadline {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        /* Contact Info Cards */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .contact-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 28px;
+            transition: transform 0.3s var(--transition-bounce), border-color 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--glass-border-hover);
+        }
+
+        .contact-card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            background: rgba(0, 217, 255, 0.1);
+        }
+
+        .contact-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .contact-card p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+            color: var(--text-secondary);
+        }
+
+        .contact-card a {
+            color: var(--accent-cyan);
+            font-weight: 500;
+        }
+
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* Contact Form */
+        .contact-form-wrapper {
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 40px;
+        }
+
+        .contact-form-wrapper h2 {
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-family: var(--font-main);
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.15);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(136, 153, 166, 0.6);
+        }
+
+        .form-group textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238899A6' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+        }
+
+        .form-group select option {
+            background: var(--bg-dark);
+            color: var(--text-primary);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px 32px;
+            background: linear-gradient(135deg, var(--accent-cyan), #00b3d6);
+            color: #000;
+            font-weight: 700;
+            font-size: 1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s var(--transition-bounce), box-shadow 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 40px rgba(0, 217, 255, 0.4);
+        }
+
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .form-success.show {
+            display: block;
+        }
+
+        .form-success .success-icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+
+        .form-success h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: var(--accent-green);
+        }
+
+        .form-success p {
+            margin-bottom: 0;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 0;
+            background: rgba(255, 255, 255, 0.01);
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .faq-grid {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .faq-question:hover {
+            background: var(--bg-card-hover);
+        }
+
+        .faq-question h4 {
+            font-size: 1.05rem;
+            margin: 0;
+            color: var(--text-primary);
+        }
+
+        .faq-toggle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            transition: transform 0.3s;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s;
+        }
+
+        .faq-answer p {
+            padding: 0 24px 24px;
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 300px;
+        }
+
+        .faq-item.open .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        /* Response Time Badge */
+        .response-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--accent-green);
+            margin-top: 24px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .contact-form-wrapper {
+                padding: 28px;
+            }
+
+            .support-hero {
+                padding-top: 100px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">📐</span>
+                ReclaimHeight
+            </a>
+            <div class="nav-links">
+                <a href="index.html#features">Features</a>
+                <a href="index.html#how-it-works">How It Works</a>
+                <a href="index.html#app-showcase">Screenshots</a>
+                <a href="#" class="nav-cta">Download</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="support-hero">
+        <div class="hero-bg-effects">
+            <div class="hero-glow glow-1"></div>
+            <div class="hero-glow glow-2"></div>
+        </div>
+        <div class="container support-content fade-in-up">
+            <span class="section-badge">Support</span>
+            <h1>How Can We <span class="text-gradient">Help You?</span></h1>
+            <p class="subheadline">Have questions about ReclaimHeight? We're here to help. Reach out to our team and
+                we'll get back to you as soon as possible.</p>
+            <div class="response-badge">
+                <span>⚡</span>
+                Typical response time: 24-48 hours
+            </div>
+        </div>
+    </header>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Contact Info -->
+                <div class="contact-info fade-in-up">
+                    <div class="contact-card">
+                        <div class="contact-card-icon">📧</div>
+                        <h3>Email Support</h3>
+                        <p>For general inquiries, technical support, or feedback, email us at:</p>
+                        <p style="margin-top: 12px;">
+                            <a href="mailto:jubaljacobplagereinc@protonmail.com">jubaljacobplagereinc@protonmail.com</a>
+                        </p>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-card-icon">🐛</div>
+                        <h3>Report a Bug</h3>
+                        <p>Found something that isn't working correctly? Use the contact form or email us with details
+                            about the issue, including your device model and iOS version.</p>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-card-icon">💡</div>
+                        <h3>Feature Requests</h3>
+                        <p>Have an idea that would make ReclaimHeight even better? We'd love to hear it! Share your
+                            suggestions with us.</p>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-card-icon">📄</div>
+                        <h3>Legal & Privacy</h3>
+                        <p>For questions about our privacy practices or terms of service:</p>
+                        <p style="margin-top: 12px;">
+                            <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Service</a>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form-wrapper fade-in-up delay-1">
+                    <h2>Send Us a Message</h2>
+                    <form id="contactForm" action="https://formsubmit.co/jubaljacobplagereinc@protonmail.com"
+                        method="POST">
+                        <!-- FormSubmit Configuration -->
+                        <input type="hidden" name="_subject" value="ReclaimHeight Support Request">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_next" value="https://reclaimheight.com/support.html?success=true">
+                        <!-- Honeypot for spam prevention -->
+                        <input type="text" name="_honey" style="display:none">
+
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" placeholder="John Doe" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <select id="subject" name="subject" required>
+                                <option value="" disabled selected>Select a topic...</option>
+                                <option value="General Inquiry">General Inquiry</option>
+                                <option value="Technical Support">Technical Support</option>
+                                <option value="Bug Report">Bug Report</option>
+                                <option value="Feature Request">Feature Request</option>
+                                <option value="Billing & Subscription">Billing & Subscription</option>
+                                <option value="Account Issue">Account Issue</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message"
+                                placeholder="Describe your issue or question in detail..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+
+                    <div class="form-success" id="formSuccess">
+                        <div class="success-icon">✅</div>
+                        <h3>Message Sent!</h3>
+                        <p>Thank you for reaching out. We'll get back to you within 24-48 hours.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <span class="section-badge">FAQ</span>
+                <h2 class="section-title">Frequently Asked <span class="text-gradient">Questions</span></h2>
+            </div>
+            <div class="faq-grid fade-in-up">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>How does the AI posture scan work?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our AI uses advanced computer vision to analyze your side-profile photo. It identifies key
+                            posture markers like forward head position, thoracic kyphosis (upper back curve), and pelvic
+                            tilt to calculate how much height you may be losing to poor posture.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>How long before I see results?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Most users begin noticing improvements within 2-3 weeks of consistent daily exercises. The
+                            full 20-chapter program is designed to be completed over several weeks for lasting
+                            structural changes.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Is my data private and secure?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! Your privacy is our priority. Photos are processed on-device when possible, and any data
+                            stored in the cloud is encrypted. We never sell your data to third parties. Read our <a
+                                href="privacy.html">Privacy Policy</a> for full details.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Can I cancel my subscription?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, you can cancel anytime through your Apple ID subscription settings. Go to Settings >
+                            Apple ID > Subscriptions on your iPhone to manage or cancel your subscription.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Does the app work on iPad?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>ReclaimHeight is currently optimized for iPhone. While it may run on iPad, we recommend using
+                            an iPhone for the best posture scanning experience using the device's camera.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <span class="logo-icon">📐</span>
+                        ReclaimHeight
+                    </a>
+                    <p>Stand taller. Feel better. Be confident.</p>
+                </div>
+                <div class="footer-links-group">
+                    <div class="footer-col">
+                        <h4>Product</h4>
+                        <a href="index.html#features">Features</a>
+                        <a href="index.html#how-it-works">How It Works</a>
+                        <a href="index.html#app-showcase">Screenshots</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Legal</h4>
+                        <a href="privacy.html">Privacy Policy</a>
+                        <a href="terms.html">Terms of Service</a>
+                        <a href="support.html">Support</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2026 ReclaimHeight. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('open');
+            });
+        });
+
+        // Show success message if redirected back from form submission
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('success') === 'true') {
+            document.getElementById('contactForm').style.display = 'none';
+            document.getElementById('formSuccess').classList.add('show');
+        }
+
+        // Scroll Animation Logic
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navbar scroll effect
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+
+</html>
